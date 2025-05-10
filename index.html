@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilanthra - Professional Web Development</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --navy: #0b1d3a;
+            --silver: #c4cdd5;
+            --white: #ffffff;
+            --lavender: #cbbaff;
+            --teal: #80ced7;
+            --whatsapp: #25d366;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--navy);
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(11, 29, 58, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--white) !important;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand span {
+            color: var(--lavender);
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .nav-link {
+            color: var(--silver) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--lavender) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--lavender);
+            bottom: -2px;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #132a4e 100%);
+            color: var(--white);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--silver);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--lavender);
+            color: var(--midnight-blue);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(226, 209, 249, 0.2);
+        }
+
+        /* .btn-primary {
+            background-color: var(--lavender);
+            border-color: var(--lavender);
+            color: var(--navy);
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--teal);
+            border-color: var(--teal);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(203, 186, 255, 0.4);
+        } */
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--navy);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .floating-images {
+            position: relative;
+            height: 400px;
+        }
+
+        .floating-img {
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .floating-img:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .img-1 {
+            margin-top: -20px;
+            top: 0;
+            left: 15%;
+            width: 100%;
+            z-index: 1;
+            /* border: 5px solid rgba(255, 255, 255, 0.2); */
+        }
+
+        .img-2 {
+            top: 55%;
+            left: 30%;
+            width: 20%;
+            z-index: 3;
+            /* border: 5px solid rgba(255, 255, 255, 0.2); */
+        }
+
+        .img-3 {
+            top: 30%;
+            left: 1%;
+            width: 35%;
+            z-index: 2;
+            /* border: 5px solid rgba(255, 255, 255, 0.2); */
+        }
+
+        .moon-shape {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(203, 186, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Social Proof */
+        #social-proof {
+            background-color: var(--white);
+            padding: 40px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .partner-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            max-width: 120px;
+            margin: 10px 20px;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Services Section */
+        #services {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--lavender);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-title p {
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+            border-bottom: 3px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid var(--lavender);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            color: var(--lavender);
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--navy);
+        }
+
+        .service-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 100px 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .portfolio-item {
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .portfolio-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .portfolio-images {
+            position: relative;
+            height: 300px;
+        }
+
+        .portfolio-img {
+            position: absolute;
+            border-radius: 8px;
+            /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-img:hover {
+            transform: translateY(-5px) scale(1.02);
+            /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); */
+        }
+
+        .portfolio-img-main {
+            width: 70%;
+            z-index: 1;
+        }
+
+        .portfolio-img-mobile {
+            width: 20%;
+            z-index: 3;
+            bottom: -20px;
+            right: 0;
+        }
+
+        .portfolio-img-tablet {
+            width: 30%;
+            z-index: 2;
+            top: -30px;
+            right: 10%;
+        }
+
+        .portfolio-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .portfolio-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            background-color: var(--lavender);
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-description {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .portfolio-link {
+            color: var(--navy);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            color: var(--lavender);
+        }
+
+        .portfolio-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Testimonials */
+        #testimonials {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-shape {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(203, 186, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--lavender);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #495057;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            background-color: var(--silver);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h5 {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .testimonial-info p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--lavender);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .contact-details h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--navy);
+        }
+
+        .contact-details p {
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--lavender);
+        }
+
+        .form-control {
+            border: 1px solid #e9ecef;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--lavender);
+            box-shadow: 0 0 0 0.25rem rgba(203, 186, 255, 0.25);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            background-color: var(--navy);
+            border-color: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--lavender);
+            border-color: var(--lavender);
+            color: var(--navy);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(11, 29, 58, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--silver);
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--lavender);
+        }
+
+        .footer-description {
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .footer-heading {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--lavender);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--silver);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--lavender);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--lavender);
+            color: var(--navy);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background-color: var(--white);
+            color: var(--navy);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .floating-images {
+                height: 300px;
+                margin-top: 40px;
+            }
+            
+            .portfolio-images {
+                height: 250px;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .floating-images {
+                height: 250px;
+            }
+            
+            .portfolio-item {
+                margin-bottom: 60px;
+            }
+            
+            .portfolio-images {
+                height: 200px;
+            }
+            
+            .contact-info {
+                margin-bottom: 40px;
+            }
+
+            .img-1 {
+                margin-top: 0 !important;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#hero"><i class="bi bi-moon-stars" style="margin-right: 10px;"></i>Nil<span>anthra</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="moon-shape"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">We Shape Serene Digital Stories, One Pixel at a Time</h1>
+                        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">At Nilanthra, we craft responsive, fast, and affordable websites that make your business shine online.</p>
+                        <div data-aos="fade-up" data-aos-delay="300">
+                            <a href="#portfolio" class="btn btn-primary">See Our Work</a>
+                            <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="floating-images" data-aos="fade-left" data-aos-delay="300">
+                        <img src="images/checknmate-desktop.png" alt="Website Design" class="floating-img img-1">
+                        <img src="images/rishiandshreyasarangetram-mobile.png" alt="Mobile Design" width="200px" class="floating-img img-2">
+                        <img src="images/thelaundrykart-tablet.png" alt="Tablet Design" class="floating-img img-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <!-- <section id="social-proof">
+        <div class="container">
+            <div class="text-center mb-4">
+                <p class="mb-0 fw-bold text-muted">Trusted by businesses across e-commerce, education, and events.</p>
+            </div>
+            <div class="partner-logos">
+                <div class="partner-logo" data-aos="fade-up">
+                    <p class="fw-bold text-center mb-0">E-COMMERCE</p>
+                </div>
+                <div class="partner-logo" data-aos="fade-up" data-aos-delay="100">
+                    <p class="fw-bold text-center mb-0">EDUCATION</p>
+                </div>
+                <div class="partner-logo" data-aos="fade-up" data-aos-delay="200">
+                    <p class="fw-bold text-center mb-0">EVENTS</p>
+                </div>
+                <div class="partner-logo" data-aos="fade-up" data-aos-delay="300">
+                    <p class="fw-bold text-center mb-0">TECH</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Our Services</h2>
+                <p data-aos="fade-up" data-aos-delay="100">We provide end-to-end digital solutions that help your business thrive in the digital world.</p>
+            </div>
+            <div class="row">
+                <!-- Website Development -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h4 class="service-title">Website Development</h4>
+                        <p class="service-description">Custom-designed, responsive websites that reflect your brand identity and engage your audience effectively.</p>
+                    </div>
+                </div>
+                
+                <!-- E-commerce Websites -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-cart3"></i>
+                        </div>
+                        <h4 class="service-title">E-commerce Websites</h4>
+                        <p class="service-description">Scalable and secure online stores with seamless payment integration and inventory management systems.</p>
+                    </div>
+                </div>
+                
+                <!-- SaaS Platforms -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-cloud"></i>
+                        </div>
+                        <h4 class="service-title">SaaS Platforms</h4>
+                        <p class="service-description">Cloud-based software solutions that streamline your business operations and enhance productivity.</p>
+                    </div>
+                </div>
+                
+                <!-- LMS (Learning Portals) -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <h4 class="service-title">LMS (Learning Portals)</h4>
+                        <p class="service-description">Interactive learning management systems for educational institutions and corporate training programs.</p>
+                    </div>
+                </div>
+                
+                <!-- Event Booking Portals -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <h4 class="service-title">Event Booking Portals</h4>
+                        <p class="service-description">Comprehensive event registration and ticketing platforms with real-time updates and seamless payment processing.</p>
+                    </div>
+                </div>
+                
+                <!-- Mobile App Development -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h4 class="service-title">Mobile App Development</h4>
+                        <p class="service-description">Native and cross-platform mobile applications that complement your web presence and enhance user engagement.</p>
+                    </div>
+                </div>
+                
+                <!-- Hosting & Domain Setup -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-hdd-network"></i>
+                        </div>
+                        <h4 class="service-title">Hosting & Domain Setup</h4>
+                        <p class="service-description">Reliable hosting solutions and domain registration services to ensure your website's optimal performance.</p>
+                    </div>
+                </div>
+                
+                <!-- SEO & Optimization -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <h4 class="service-title">SEO & Optimization</h4>
+                        <p class="service-description">Strategic search engine optimization to improve your website's visibility and drive organic traffic.</p>
+                    </div>
+                </div>
+                
+                <!-- Website Maintenance -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-gear"></i>
+                        </div>
+                        <h4 class="service-title">Website Maintenance</h4>
+                        <p class="service-description">Regular updates, security patches, and technical support to keep your website running smoothly and securely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Our Portfolio</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Explore our recent projects that showcase our expertise in creating impactful digital experiences.</p>
+            </div>
+            
+            <!-- TheLaundryKart -->
+            <div class="portfolio-item">
+                <div class="row align-items-center">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="portfolio-images">
+                            <img src="images/thelaundrykart-desktop.png" alt="TheLaundryKart Website" class="portfolio-img portfolio-img-main">
+                            <img src="images/thelaundrykart-mobile.png" alt="TheLaundryKart Mobile" class="portfolio-img portfolio-img-mobile">
+                            <img src="images/thelaundrykart-tablet.png" alt="TheLaundryKart Tablet" class="portfolio-img portfolio-img-tablet">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">E-commerce / Local Services</span>
+                            <h3 class="portfolio-title">TheLaundryKart</h3>
+                            <p class="portfolio-description">A complete laundry service booking platform with real-time order tracking, secure payment integration, and an intuitive customer dashboard.</p>
+                            <a href="#" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aiasa Book -->
+            <div class="portfolio-item">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="portfolio-images">
+                            <img src="images/aiasabook-desktop.png" alt="Aiasa Book Website" class="portfolio-img portfolio-img-main">
+                            <img src="images/aiasabook-mobile.png" alt="Aiasa Book Mobile" class="portfolio-img portfolio-img-mobile">
+                            <img src="images/aiasabook-tablet.png" alt="Aiasa Book Tablet" class="portfolio-img portfolio-img-tablet">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Artist Portfolio + Booking</span>
+                            <h3 class="portfolio-title">Aiasa Book</h3>
+                            <p class="portfolio-description">An elegant portfolio website for a renowned artist featuring an online gallery, event calendar, and integrated booking system for exhibitions.</p>
+                            <a href="#" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Apaarr Learning -->
+            <div class="portfolio-item">
+                <div class="row align-items-center">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="portfolio-images">
+                            <img src="images/learning-apaarr-desktop.png" alt="Apaarr Learning Website" class="portfolio-img portfolio-img-main">
+                            <img src="images/learning-apaarr-mobile.png" alt="Apaarr Learning Mobile" class="portfolio-img portfolio-img-mobile">
+                            <img src="images/learning-apaarr-tablet.png" alt="Apaarr Learning Tablet" class="portfolio-img portfolio-img-tablet">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">LMS / Education Portal</span>
+                            <h3 class="portfolio-title">Apaarr Learning</h3>
+                            <p class="portfolio-description">A comprehensive learning management system with course creation tools, progress tracking, interactive assessments, and student collaboration features.</p>
+                            <a href="#" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Check N Mate -->
+            <div class="portfolio-item">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="portfolio-images">
+                            <img src="images/checknmate-desktop.png" alt="Check N Mate Website" class="portfolio-img portfolio-img-main">
+                            <img src="images/checknmate-mobile.png" alt="Check N Mate Mobile" class="portfolio-img portfolio-img-mobile">
+                            <img src="images/checknmate-tablet.png" alt="Check N Mate Tablet" class="portfolio-img portfolio-img-tablet">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Event Registration</span>
+                            <h3 class="portfolio-title">Check N Mate</h3>
+                            <p class="portfolio-description">An event registration platform with team management tools, document submission features, and real-time competition updates for participants.</p>
+                            <a href="#" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rishi & Shreya Arangetram -->
+            <div class="portfolio-item">
+                <div class="row align-items-center">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="portfolio-images">
+                            <img src="images/rishiandshreyasarangetram-desktop.png" alt="Arangetram Website" class="portfolio-img portfolio-img-main">
+                            <img src="images/rishiandshreyasarangetram-mobile.png" alt="Arangetram Mobile" class="portfolio-img portfolio-img-mobile">
+                            <img src="images/rishiandshreyasarangetram-tablet.png" alt="Arangetram Tablet" class="portfolio-img portfolio-img-tablet">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Event Microsite</span>
+                            <h3 class="portfolio-title">Rishi & Shreya Arangetram</h3>
+                            <p class="portfolio-description">An elegant microsite for a classical dance debut featuring event details, performer profiles, RSVP management, and a live streaming option.</p>
+                            <a href="#" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="testimonial-shape"></div>
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Client Testimonials</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Don't just take our word for it. Here's what our clients have to say about our work.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <p class="testimonial-text">The Nilanthra team delivered our site incredibly fast — and every detail was perfect. Truly professional and reliable service.</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                AK
+                            </div>
+                            <div class="testimonial-info">
+                                <h5>Arun Kumar</h5>
+                                <p>TheLaundryKart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <p class="testimonial-text">Our learning platform engagement increased by 70% after the redesign. Nilanthra understood exactly what we needed to improve the user experience.</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                PR
+                            </div>
+                            <div class="testimonial-info">
+                                <h5>Priya Rao</h5>
+                                <p>Apaarr Learning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        <p class="testimonial-text">Working with Nilanthra was a breeze. They created an elegant website for our event that received numerous compliments from attendees.</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                VS
+                            </div>
+                            <div class="testimonial-info">
+                                <h5>Vikram Singh</h5>
+                                <p>AI Robotics Tournament</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Get In Touch</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Have a project in mind? Let's discuss how we can help bring your vision to life.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Our Location</h5>
+                                <p>123 Tech Park, Innovation Street,<br>Bangalore, Karnataka 560001</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Email Us</h5>
+                                <p>hello@nilanthra.com<br>support@nilanthra.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Call Us</h5>
+                                <p>+91 98765 43210<br>+91 80 4321 5678</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Working Hours</h5>
+                                <p>Monday - Friday: 9:00 AM to 6:00 PM<br>Saturday: 10:00 AM to 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Your Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <input type="text" class="form-control" id="subject" placeholder="Enter subject">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary submit-btn">
+                                        <i class="bi bi-send me-2"></i> Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="footer-logo">Nil<span>anthra</span></a>
+                    <p class="footer-description">We craft elegant, responsive websites that help businesses establish a strong online presence and connect with their audience effectively.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://wa.me/91XXXXXXXXXX" class="social-link">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mt-4 mt-md-0">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#hero"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="#services"><i class="bi bi-chevron-right"></i> Services</a></li>
+                        <li><a href="#portfolio"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="#testimonials"><i class="bi bi-chevron-right"></i> Testimonials</a></li>
+                        <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                    <h5 class="footer-heading">Our Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Website Development</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> E-commerce Websites</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> SaaS Platforms</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Mobile App Development</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> SEO & Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                    <h5 class="footer-heading">Newsletter</h5>
+                    <p>Subscribe to our newsletter to receive updates on our latest work and industry insights.</p>
+                    <form class="mt-4">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email">
+                            <button class="btn btn-outline-light" type="button"><i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2025 Nilanthra. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-btn">
+        <i class="bi bi-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us instantly!</span>
+    </a>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Add active class to current nav item
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll behavior
+            const navbar = document.querySelector('.navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '10px 0';
+                } else {
+                    navbar.style.padding = '15px 0';
+                }
+            });
+            
+            // Smooth scrolling for navbar links
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Smooth scroll for hero buttons
+            const ctaButtons = document.querySelectorAll('.hero-content .btn');
+            
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Form validation
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple validation
+                    let valid = true;
+                    const inputs = contactForm.querySelectorAll('input, textarea');
+                    
+                    inputs.forEach(input => {
+                        if (input.hasAttribute('required') && !input.value.trim()) {
+                            valid = false;
+                            input.classList.add('is-invalid');
+                        } else {
+                            input.classList.remove('is-invalid');
+                            input.classList.add('is-valid');
+                        }
+                    });
+                    
+                    if (valid) {
+                        // Show success message
+                        const formRow = contactForm.querySelector('.row');
+                        formRow.innerHTML = `
+                            <div class="col-12 text-center py-5">
+                                <div class="alert alert-success">
+                                    <i class="bi bi-check-circle-fill me-2"></i>
+                                    Your message has been sent successfully. We'll get back to you soon!
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Reset form after 5 seconds
+                        setTimeout(() => {
+                            contactForm.reset();
+                            inputs.forEach(input => {
+                                input.classList.remove('is-valid');
+                            });
+                        }, 5000);
+                    }
+                });
+                
+                // Real-time validation
+                const inputs = contactForm.querySelectorAll('input, textarea');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('blur', function() {
+                        if (this.hasAttribute('required') && !this.value.trim()) {
+                            this.classList.add('is-invalid');
+                        } else {
+                            this.classList.remove('is-invalid');
+                        }
+                    });
+                    
+                    input.addEventListener('input', function() {
+                        if (this.classList.contains('is-invalid') && this.value.trim()) {
+                            this.classList.remove('is-invalid');
+                        }
+                    });
+                });
+            }
+            
+            // Activate section animations on scroll
+            const scrollElements = document.querySelectorAll('.fade-up, .fade-right, .fade-left');
+
+            const elementInView = (el, percentageScroll = 100) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= 
+                    ((window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100))
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add('active');
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 90)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Trigger on initial load
+            handleScrollAnimation();
+        });
+    </script>
+</body>
+</html>
