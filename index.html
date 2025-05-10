@@ -7,6 +7,7 @@
     <meta name="description" content="Nilanthra crafts elegant, responsive websites and digital experiences inspired by the beauty and calm of moonlight. Fast, affordable, and pixel-perfect web design and development." />
     <meta name="keywords" content="web development, responsive websites, affordable web design, elegant websites, moonlight websites, portfolio, Nilanthra, Tamil Nadu web agency, mobile apps, digital solutions" />
     <meta name="author" content="Nilanthra" />
+    <meta theme-color="#0b1d3a" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://nilanthra.com" />
@@ -55,7 +56,7 @@
 
         /* Navbar Styling */
         .navbar {
-            background-color: rgba(11, 29, 58, 0.95) !important;
+            background: linear-gradient(135deg, var(--navy) 0%, #132a4e 100%) !important;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 15px 0;
             transition: all 0.3s ease;
@@ -330,86 +331,192 @@
             line-height: 1.6;
         }
 
-        /* Portfolio Section */
+        /* Enhanced Portfolio Section */
         #portfolio {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #portfolio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--lavender), transparent);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
             position: relative;
         }
 
-        .portfolio-item {
-            margin-bottom: 100px;
+        .section-title h2 {
+            color: var(--navy);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
             position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--lavender);
+        }
+
+        .section-title p {
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .portfolio-item {
+            margin-bottom: 120px;
+            position: relative;
+            padding: 40px 0;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--silver), transparent);
+        }
+
+        .portfolio-item:last-child::before {
+            display: none;
         }
 
         .portfolio-item:last-child {
             margin-bottom: 0;
         }
 
+        /* Images Container Styling */
         .portfolio-images {
             position: relative;
-            height: 300px;
+            height: 400px;
+            perspective: 1000px;
         }
 
         .portfolio-img {
             position: absolute;
-            border-radius: 8px;
-            /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
-            transition: all 0.4s ease;
+            border-radius: 12px;
+            /* box-shadow: 0 15px 30px rgba(11, 29, 58, 0.1); */
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* border: 1px solid rgba(196, 205, 213, 0.3); */
+            overflow: hidden;
+        }
+
+        .portfolio-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(203, 186, 255, 0.15), rgba(128, 206, 215, 0.05));
+            pointer-events: none;
         }
 
         .portfolio-img:hover {
-            transform: translateY(-5px) scale(1.02);
-            /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); */
+            transform: translateY(-12px) scale(1.02);
+            /* box-shadow: 0 20px 40px rgba(11, 29, 58, 0.15); */
         }
 
         .portfolio-img-main {
-            width: 70%;
+            width: 75%;
+            height: auto;
             z-index: 1;
+            top: 0;
+            left: 0;
         }
 
         .portfolio-img-mobile {
-            width: 20%;
+            width: 22%;
             z-index: 3;
             bottom: -20px;
             right: 0;
+            transform: rotate(5deg);
+            box-shadow: 0 15px 35px rgba(11, 29, 58, 0.15);
         }
 
         .portfolio-img-tablet {
-            width: 30%;
+            width: 35%;
             z-index: 2;
             top: -30px;
             right: 10%;
+            transform: rotate(-5deg);
+            box-shadow: 0 15px 35px rgba(11, 29, 58, 0.12);
         }
 
+        .portfolio-img:hover.portfolio-img-mobile {
+            transform: rotate(3deg) translateY(-12px) scale(1.02);
+        }
+
+        .portfolio-img:hover.portfolio-img-tablet {
+            transform: rotate(-3deg) translateY(-12px) scale(1.02);
+        }
+
+        /* Content Styling */
         .portfolio-content {
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 0 20px;
         }
 
         .portfolio-title {
             font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 12px;
             color: var(--navy);
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
 
         .portfolio-category {
             display: inline-block;
-            background-color: var(--lavender);
+            background: linear-gradient(135deg, var(--lavender), #beadff);
             color: var(--navy);
             font-weight: 600;
             font-size: 0.8rem;
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-bottom: 15px;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            width: fit-content;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(203, 186, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(203, 186, 255, 0.4);
         }
 
         .portfolio-description {
             color: #6c757d;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
 
         .portfolio-link {
@@ -418,20 +525,76 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .portfolio-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--lavender), var(--teal));
+            transition: width 0.3s ease;
         }
 
         .portfolio-link i {
-            margin-left: 5px;
+            margin-left: 8px;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .portfolio-link:hover {
             color: var(--lavender);
         }
 
+        .portfolio-link:hover::after {
+            width: 100%;
+        }
+
         .portfolio-link:hover i {
-            transform: translateX(5px);
+            transform: translateX(8px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .portfolio-images {
+                height: 300px;
+                margin-bottom: 30px;
+            }
+            
+            .portfolio-item {
+                margin-bottom: 80px;
+            }
+            
+            .portfolio-item::before {
+                bottom: -40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .portfolio-images {
+                height: 250px;
+            }
+            
+            .portfolio-img-main {
+                width: 70%;
+            }
+            
+            .portfolio-img-mobile {
+                width: 20%;
+            }
+            
+            .portfolio-img-tablet {
+                width: 30%;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
         }
 
         /* Testimonials */
@@ -560,7 +723,6 @@
             border: 1px solid #e9ecef;
             padding: 12px 15px;
             border-radius: 8px;
-            margin-bottom: 20px;
             transition: all 0.3s ease;
         }
 
@@ -583,6 +745,7 @@
             background-color: var(--navy);
             border-color: var(--navy);
             transition: all 0.3s ease;
+            color: white;
         }
 
         .submit-btn:hover {
@@ -832,7 +995,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#hero"><i class="bi bi-moon-stars" style="margin-right: 10px;"></i>Nil<span>anthra</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -1019,51 +1182,51 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Enhanced Portfolio Section -->
     <section id="portfolio">
         <div class="container">
-            <div class="section-title">
-                <h2 data-aos="fade-up">Our Portfolio</h2>
-                <p data-aos="fade-up" data-aos-delay="100">Explore our recent projects that showcase our expertise in creating impactful digital experiences.</p>
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Portfolio</h2>
+                <p>Explore our recent projects that showcase our expertise in creating impactful digital experiences.</p>
             </div>
             
             <!-- TheLaundryKart -->
             <div class="portfolio-item">
                 <div class="row align-items-center">
-                    <div class="col-lg-6" data-aos="fade-right">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
                         <div class="portfolio-images">
                             <img src="images/thelaundrykart-desktop.png" alt="TheLaundryKart Website" class="portfolio-img portfolio-img-main">
                             <img src="images/thelaundrykart-mobile.png" alt="TheLaundryKart Mobile" class="portfolio-img portfolio-img-mobile">
                             <img src="images/thelaundrykart-tablet.png" alt="TheLaundryKart Tablet" class="portfolio-img portfolio-img-tablet">
                         </div>
                     </div>
-                    <div class="col-lg-6" data-aos="fade-left">
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                         <div class="portfolio-content">
                             <span class="portfolio-category">Business / Local Services</span>
                             <h3 class="portfolio-title">The Laundry Kart</h3>
-                            <p class="portfolio-description">A complete laundry service booking platform with pickup and drop facility, secure payment integration, and an intuitive whatsapp integration for order placement.</p>
-                            <a href="https://thelaundrykart.in" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                            <p class="portfolio-description">A complete laundry service booking platform with pickup and drop facility, secure payment integration, and an intuitive WhatsApp integration for order placement.</p>
+                            <a href="https://thelaundrykart.in" class="portfolio-link" target="_blank">Visit Website <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Aiasa Book -->
             <div class="portfolio-item">
                 <div class="row align-items-center flex-row-reverse">
-                    <div class="col-lg-6" data-aos="fade-left">
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
                         <div class="portfolio-images">
                             <img src="images/aiasabook-desktop.png" alt="Aiasa Book Website" class="portfolio-img portfolio-img-main">
                             <img src="images/aiasabook-mobile.png" alt="Aiasa Book Mobile" class="portfolio-img portfolio-img-mobile">
                             <img src="images/aiasabook-tablet.png" alt="Aiasa Book Tablet" class="portfolio-img portfolio-img-tablet">
                         </div>
                     </div>
-                    <div class="col-lg-6" data-aos="fade-right">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
                         <div class="portfolio-content">
                             <span class="portfolio-category">E-Commerce + Book Publications</span>
                             <h3 class="portfolio-title">Anna IAS Academy</h3>
-                            <p class="portfolio-description">Anna IAS Academy is one of the best institution in Tamil Nadu for all competitive examinations.  The institution in the year 2010 at katri matriculation school, kanchipuramas service part, over the years has evolved ATC.  We take in having successfully contributed to the society in a small way. </p>
-                            <a href="https://aiasabook.com" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                            <p class="portfolio-description">Anna IAS Academy is one of the best institutions in Tamil Nadu for competitive examinations. Founded in 2010, the institution has evolved significantly over the years, contributing meaningfully to society through educational excellence.</p>
+                            <a href="https://aiasabook.com" class="portfolio-link" target="_blank">Visit Website <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1072,18 +1235,18 @@
             <!-- Apaarr Learning -->
             <div class="portfolio-item">
                 <div class="row align-items-center">
-                    <div class="col-lg-6" data-aos="fade-right">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
                         <div class="portfolio-images">
                             <img src="images/learning-apaarr-desktop.png" alt="Apaarr Learning Website" class="portfolio-img portfolio-img-main">
                             <img src="images/learning-apaarr-mobile.png" alt="Apaarr Learning Mobile" class="portfolio-img portfolio-img-mobile">
                             <img src="images/learning-apaarr-tablet.png" alt="Apaarr Learning Tablet" class="portfolio-img portfolio-img-tablet">
                         </div>
                     </div>
-                    <div class="col-lg-6" data-aos="fade-left">
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                         <div class="portfolio-content">
                             <span class="portfolio-category">LMS / Education Portal</span>
                             <h3 class="portfolio-title">APAARR Trade Tutor</h3>
-                            <p class="portfolio-description">It is a Financial Advisory boutique built to deliver unbiased, ethical and fiduciary financial solutions. The team at Apaarr Global Advisory are focused on solving our client’s important problems and delivering financial solutions that are practical and commercial. </p>
+                            <p class="portfolio-description">A financial advisory boutique built to deliver unbiased, ethical, and fiduciary financial solutions. The team at Apaarr Global Advisory focuses on solving client's important problems with practical and commercial financial solutions.</p>
                             <a href="#" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
@@ -1093,19 +1256,19 @@
             <!-- Check N Mate -->
             <div class="portfolio-item">
                 <div class="row align-items-center flex-row-reverse">
-                    <div class="col-lg-6" data-aos="fade-left">
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
                         <div class="portfolio-images">
                             <img src="images/checknmate-desktop.png" alt="Check N Mate Website" class="portfolio-img portfolio-img-main">
                             <img src="images/checknmate-mobile.png" alt="Check N Mate Mobile" class="portfolio-img portfolio-img-mobile">
                             <img src="images/checknmate-tablet.png" alt="Check N Mate Tablet" class="portfolio-img portfolio-img-tablet">
                         </div>
                     </div>
-                    <div class="col-lg-6" data-aos="fade-right">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
                         <div class="portfolio-content">
                             <span class="portfolio-category">Tournament Creation & Registration</span>
                             <h3 class="portfolio-title">Check N Mate</h3>
-                            <p class="portfolio-description">An event registration platform having one-stop solution for all chess tournaments and competitions.</p>
-                            <a href="https://tournaments.airoboticsmania.com/" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                            <p class="portfolio-description">An event registration platform offering a one-stop solution for all chess tournaments and competitions, streamlining the organization and participation process.</p>
+                            <a href="https://tournaments.airoboticsmania.com/" class="portfolio-link" target="_blank">Visit Website <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1114,19 +1277,19 @@
             <!-- Rishi & Shreya Arangetram -->
             <div class="portfolio-item">
                 <div class="row align-items-center">
-                    <div class="col-lg-6" data-aos="fade-right">
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
                         <div class="portfolio-images">
                             <img src="images/rishiandshreyasarangetram-desktop.png" alt="Arangetram Website" class="portfolio-img portfolio-img-main">
                             <img src="images/rishiandshreyasarangetram-mobile.png" alt="Arangetram Mobile" class="portfolio-img portfolio-img-mobile">
                             <img src="images/rishiandshreyasarangetram-tablet.png" alt="Arangetram Tablet" class="portfolio-img portfolio-img-tablet">
                         </div>
                     </div>
-                    <div class="col-lg-6" data-aos="fade-left">
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                         <div class="portfolio-content">
                             <span class="portfolio-category">Event Microsite</span>
                             <h3 class="portfolio-title">Rishi & Shreyas Arangetram</h3>
-                            <p class="portfolio-description">An elegant microsite for a classical violin arangetram event details, performer profiles, RSVP management, and a live streaming option.</p>
-                            <a href="https://rishiandshreyasarangetram.com/" class="portfolio-link">Visit Website <i class="bi bi-arrow-right"></i></a>
+                            <p class="portfolio-description">An elegant microsite for a classical violin arangetram event featuring detailed performer profiles, RSVP management, and a live streaming option for virtual attendees.</p>
+                            <a href="https://rishiandshreyasarangetram.com/" class="portfolio-link" target="_blank">Visit Website <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1232,7 +1395,7 @@
                             </div>
                             <div class="contact-details">
                                 <h5>Call Us</h5>
-                                <p>+91 9488909128</p>
+                                <p>+1 (321) 315 - 5394</p>
                             </div>
                         </div>
                         <div class="contact-info-item">
@@ -1298,7 +1461,7 @@
                         <a href="#" class="social-link">
                             <i class="bi bi-linkedin"></i>
                         </a>
-                        <a href="https://wa.me/91XXXXXXXXXX" class="social-link">
+                        <a href="https://wa.me/13213155394" class="social-link">
                             <i class="bi bi-whatsapp"></i>
                         </a>
                         <a href="#" class="social-link">
@@ -1344,7 +1507,7 @@
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/919488909128" class="whatsapp-btn">
+    <a href="https://wa.me/13213155394" class="whatsapp-btn">
         <i class="bi bi-whatsapp"></i>
         <span class="whatsapp-tooltip">Chat with us instantly!</span>
     </a>
