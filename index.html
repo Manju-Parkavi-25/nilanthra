@@ -710,11 +710,11 @@
         }
 
         /* Create staggered animation effect */
-        @media (min-width: 768px) {
+        /* @media (min-width: 768px) {
             .col-md-6:nth-child(odd) {
                 transform: translateY(20px);
             }
-        }
+        } */
 
         /* Responsive adjustments */
         @media (max-width: 991px) {
@@ -1880,7 +1880,7 @@
                 <div class="col-lg-7">
                     <div class="contact-form" data-aos="fade-up">
                         <form id="contactForm">
-                            <div class="row">
+                            <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Your Name</label>
@@ -1911,7 +1911,8 @@
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary submit-btn">
-                                        <i class="bi bi-send me-2"></i> Send Message
+                                        <span id="submitSpinner" class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+    <span id="submitText"><i class="bi bi-send me-2"></i> Send Message</span>
                                     </button>
                                 </div>
                             </div>
@@ -2057,6 +2058,10 @@
             const contactForm = document.getElementById('contactForm');
 
             if (contactForm) {
+                const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+
                 contactForm.addEventListener('submit', function (e) {
                     e.preventDefault();
 
@@ -2075,6 +2080,10 @@
                     });
 
                     if (valid) {
+                        // Show spinner and disable button
+            submitText.classList.add('d-none');
+            submitSpinner.classList.remove('d-none');
+            submitBtn.disabled = true;
                         const formData = new FormData(contactForm);
 
                         // 🔁 Send the form to your PHP script
@@ -2102,7 +2111,13 @@
                             .catch(error => {
                                 console.error("Error:", error);
                                 alert("There was an error sending your message. Please try again later.");
-                            });
+                            })
+                            .finally(() => {
+                    // Hide spinner and enable button again
+                    submitText.classList.remove('d-none');
+                    submitSpinner.classList.add('d-none');
+                    submitBtn.disabled = false;
+                });
                     }
                 });
 
