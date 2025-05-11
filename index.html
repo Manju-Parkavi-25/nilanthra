@@ -1905,7 +1905,7 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label for="message" class="form-label">Message</label>
-                                        <textare a class="form-control" id="message" rows="5"
+                                        <textarea a class="form-control" id="message" rows="5"
                                             placeholder="Enter your message" required></textarea>
                                     </div>
                                 </div>
@@ -2075,24 +2075,34 @@
                     });
 
                     if (valid) {
-                        // Show success message
-                        const formRow = contactForm.querySelector('.row');
-                        formRow.innerHTML = `
-                            <div class="col-12 text-center py-5">
-                                <div class="alert alert-success">
-                                    <i class="bi bi-check-circle-fill me-2"></i>
-                                    Your message has been sent successfully. We'll get back to you soon!
-                                </div>
-                            </div>
-                        `;
+                        const formData = new FormData(contactForm);
 
-                        // Reset form after 5 seconds
-                        setTimeout(() => {
-                            contactForm.reset();
-                            inputs.forEach(input => {
-                                input.classList.remove('is-valid');
+                        // 🔁 Send the form to your PHP script
+                        fetch("https://apaarr.com/nilanthra.php", {
+                            method: "POST",
+                            body: formData
+                        })
+                            .then(response => response.text())
+                            .then(result => {
+                                // ✅ Show success message only if mail was sent
+                                if (result.toLowerCase().includes("success")) {
+                                    const formRow = contactForm.querySelector('.row');
+                                    formRow.innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <div class="alert alert-success">
+                                <i class="bi bi-check-circle-fill me-2"></i>
+                                Your message has been sent successfully. We'll get back to you soon!
+                            </div>
+                        </div>
+                    `;
+                                } else {
+                                    alert("Failed to send message: " + result);
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                                alert("There was an error sending your message. Please try again later.");
                             });
-                        }, 5000);
                     }
                 });
 
