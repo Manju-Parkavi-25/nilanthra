@@ -1884,8 +1884,8 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Your Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
-                                            required>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="Enter your name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -1910,9 +1910,10 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary submit-btn">
-                                        <span id="submitSpinner" class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
-    <span id="submitText"><i class="bi bi-send me-2"></i> Send Message</span>
+                                    <button type="submit" id= "submitBtn" class="btn btn-primary submit-btn">
+                                        <span id="submitSpinner" class="spinner-border spinner-border-sm me-2 d-none"
+                                            role="status" aria-hidden="true"></span>
+                                        <span id="submitText"><i class="bi bi-send me-2"></i> Send Message</span>
                                     </button>
                                 </div>
                             </div>
@@ -2059,8 +2060,8 @@
 
             if (contactForm) {
                 const submitBtn = document.getElementById('submitBtn');
-    const submitText = document.getElementById('submitText');
-    const submitSpinner = document.getElementById('submitSpinner');
+                const submitText = document.getElementById('submitText');
+                const submitSpinner = document.getElementById('submitSpinner');
 
                 contactForm.addEventListener('submit', function (e) {
                     e.preventDefault();
@@ -2081,9 +2082,9 @@
 
                     if (valid) {
                         // Show spinner and disable button
-            submitText.classList.add('d-none');
-            submitSpinner.classList.remove('d-none');
-            submitBtn.disabled = true;
+                        submitText.classList.add('d-none');
+                        submitSpinner.classList.remove('d-none');
+                        submitBtn.disabled = true;
                         const formData = new FormData(contactForm);
 
                         // 🔁 Send the form to your PHP script
@@ -2113,11 +2114,11 @@
                                 alert("There was an error sending your message. Please try again later.");
                             })
                             .finally(() => {
-                    // Hide spinner and enable button again
-                    submitText.classList.remove('d-none');
-                    submitSpinner.classList.add('d-none');
-                    submitBtn.disabled = false;
-                });
+                                // Hide spinner and enable button again
+                                submitText.classList.remove('d-none');
+                                submitSpinner.classList.add('d-none');
+                                submitBtn.disabled = false;
+                            });
                     }
                 });
 
